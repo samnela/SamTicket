@@ -14,5 +14,4 @@ Vagrant.configure(2) do |config|
       ticket.vm.synced_folder ".", "/var/www/"
       ticket.vm.provision :shell , path: "bootstrap.sh"
   end
- 
 end
