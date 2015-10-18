@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    
+    <h1> Formulaire</h1>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div>
+        {{ form_label(form.firstname) }}
+        {{ form_errors(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+    </div>
+<div>
+        {{ form_label(form.lastname) }}
+        {{ form_errors(form.lastname) }}
+        {{ form_widget(form.lastname) }}
+    </div>
+    
+<div>
+        {{ form_label(form.phonenumber) }}
+        {{ form_errors(form.phonenumber) }}
+        {{ form_widget(form.phonenumber) }}
+    </div>
+        
+        <div>
+        {{ form_label(form.cellnumber) }}
+        {{ form_errors(form.cellnumber) }}
+        {{ form_widget(form.cellnumber) }}
+    </div>
+           <div>
+        {{ form_label(form.subject) }}
+        {{ form_errors(form.subject) }}
+        {{ form_widget(form.subject) }}
+    </div>
+{{ form_end(form) }}
+    {% endblock %}

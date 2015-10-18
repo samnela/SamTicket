@@ -3,10 +3,13 @@
  namespace TicketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="ticket")
+ * @ORM\Entity(repositoryClass="TicketBundle\Entity\Repository\PriorityRepository")
  */
 class Ticket
 {
@@ -68,8 +71,24 @@ class Ticket
      */
     protected $upatedDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Priority", inversedBy="tickets")
+     * @ORM\JoinColumn(name="priority_id",referencedColumnName="id")
+     * @Assert\Type(type="TicketBundle\Entity\Priority")
+     * @Assert\Valid()
+     */
+    protected $priority;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Status",inversedBy="tickets")
+     * @ORM\JoinColumn(name="status_id",referencedColumnName="id") 
+     * @Assert\Type(type="TicketBundle\Entity\Status")
+     * @Assert\Valid()
+     */
+    protected $status;
+
+
+/**
      * Get id
      *
      * @return integer
@@ -325,5 +344,53 @@ class Ticket
     public function updateDate()
     {
         $this->setUpatedDate(new \DateTime());
+    }
+
+    /**
+     * Set priority
+     *
+     * @param \TicketBundle\Entity\Priority $priority
+     *
+     * @return Ticket
+     */
+    public function setPriority(\TicketBundle\Entity\Priority $priority = null)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return \TicketBundle\Entity\Priority
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \TicketBundle\Entity\Status $status
+     *
+     * @return Ticket
+     */
+    public function setStatus(\TicketBundle\Entity\Status $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \TicketBundle\Entity\Status
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
