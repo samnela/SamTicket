@@ -102,4 +102,9 @@ class Status
     {
         return $this->tickets;
     }
+    
+    public function __toString()
+    {
+        return $this->getStatus();
+    }
 }

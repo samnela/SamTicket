@@ -23,6 +23,8 @@ class Ticket
 
     /**
      * @ORM\Column(type="string",length=100)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     protected $email;
 
@@ -48,11 +50,13 @@ class Ticket
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     protected $subject;
 
     /**
      * @ORM\Column(type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     protected $description;
 
@@ -67,7 +71,7 @@ class Ticket
     protected $createdDate;
 
     /**
-     * @ORM\Column(type="datetime",name="updated_date")
+     * @ORM\Column(type="datetime",name="updated_date",nullable=true)
      */
     protected $upatedDate;
 

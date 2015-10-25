@@ -12,16 +12,14 @@ class TicketType extends AbstractType
         $builder->add('email')
             ->add('firstname')
             ->add('lastname')
-            ->add('phonenumber')
-            ->add('cellnumber')
+            ->add('phonenumber', 'text')
+            ->add('cellnumber', 'text')
             ->add('subject')
             ->add('description')
-            ->add('priority','entity',array('class'=>'TicketBundle:Priority'))
-            ->add('status','entity',array('class'=>'TicketBundle:Status'))
-            ;
-           
+        ;
     }
-     public function configureOptions(OptionsResolver $resolver)
+
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'TicketBundle\Entity\Ticket',

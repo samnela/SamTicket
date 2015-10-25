@@ -36,6 +36,11 @@ class Priority
     {
         $this->tickets = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->getPriority();
+    }
 
     /**
      * Get id
@@ -104,4 +109,6 @@ class Priority
     {
         return $this->tickets;
     }
+    
+    
 }
