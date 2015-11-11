@@ -8,7 +8,7 @@
     {% endblock %}
     <title>{% block title %}SamTicket :: Open Source Ticket System {% endblock %}</title>
 {% block stylesheet %}
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
      {% endblock %}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,8 +25,8 @@
               {% endblock %}
       </div>
 {% block appJS %}
-    <script src="{{asset('js/jquery.min.js'}}"></script>
-    <script src="{{asset('js/bootstrap.min.js'}}"></script>
+    <script src="{{asset('js/jquery-1.11.3.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
     {% endblock %}
   </body>
 </html>
