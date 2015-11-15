@@ -12,19 +12,26 @@ security:
         user_provider:
             entity:
                 class: TicketBundle:User
-                property: username
-        
 
     firewalls:
         
-        main:
+
+        staff_area:
             pattern: ^/staff
+            http_basic: ~
             provider: user_provider
             form_login:
                 login_path: /staff/login
                 check_path: /staff/login_check
                 csrf_provider: security.csrf.token_manager
+            anonymous: ~
+
+        main:
+            pattern: ^/
+            anonymous: ~        
             
+ 
+          
             
             
         dev:
@@ -33,7 +40,7 @@ security:
 
     access_control:
         
-        - { path : ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path : ^/staff/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path : ^/staff, roles: ROLE_ADMIN }
+#        - { path : ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }     
+        - { path : ^/staff/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path : ^/staff, roles: IS_AUTHENTICATED_FULLY }
    
