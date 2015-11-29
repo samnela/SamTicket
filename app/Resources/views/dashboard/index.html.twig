@@ -15,9 +15,30 @@
         {% for ticket in tickets %}    
             <tr>
                 <td>{{ticket.id}}</td>
-                <td>{{ticket.priority.priority}}</td>
-                <td>{{ticket.status.status}}</td>
+                <td>
+                    {% if ticket.priority %}
+                    {{ ticket.priority.priority}}
+                    {% else %}
+                        not defined 
+                         {% endif %}
+                </td>
+                
+                <td>
+                    {% if ticket.status %}  
+                    {{ticket.status.status}}
+                    {% else %}
+                        not defined
+                        {% endif %}
+                </td>
                 <td>{{ticket.subject}}</td>
+                <td>{{ticket.createdDate |date("m/d/Y H::s")}}</td>
+                <td>
+                    {% if ticket.getupdatedDate is defined %}
+{{ticket.updatedDate  }}
+{% else %}
+                       not defined
+                        {% endif %}
+                                    </td>
             </tr>
         {% endfor %}
     </tbody>

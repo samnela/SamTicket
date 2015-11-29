@@ -29,8 +29,22 @@ class TicketController extends Controller
             $ticket->setCreatedDate( new \DateTime('now'));
             $em->persist($ticket);
             $em->flush();
-            $this->redirectToRoute('ticket_index');
+            $this->addFlash('user', $ticket->getLastname());
+      return $this->redirectToRoute('ticket_thankyou');
         }
         return $this->render("index/index.html.twig",array('form'=>$form->createView()));
+    }
+    
+    /**
+     * @Route("/thank-you", name="ticket_thankyou")
+     */
+    public function thankyouAction(Request $request){
+        $session = $request->getSession();
+        $user= $session->getBag('flashes')->get('user');
+          if(empty($user)){
+               throw $this->createNotFoundException('This pages does not exist');
+          }
+        
+  return   $this->render('index/thankyou.html.twig',array('user'=>$user));
     }
 }

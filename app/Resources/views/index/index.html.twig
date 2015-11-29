@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
-
+{% block navbar %}
+    {{ include('menu/menuFront.html.twig') }}
+    {%endblock %}
 {% block content %}
     
     <h1>New Ticket</h1>
