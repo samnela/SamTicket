@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default">
     <div class="container">
           <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-front" aria-expanded="false">
@@ -11,12 +11,16 @@
     </div>
          <div class="collapse navbar-collapse" id="menu-front">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Create Ticket<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="{{path('ticket_index')}}">Create Ticket<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Check Status</a></li>
     
       </ul>
             <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log In</a></li>
+                {% if app.user and is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li> <a href="{{path('login_logout')}}">Log Out</a></li>
+        {% else %}
+                    <li><a href="{{path('login_route')}}">Log In</a></li>
+{% endif %}
       </ul>
     </div>
     </div>

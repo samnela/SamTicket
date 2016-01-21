@@ -1,5 +1,8 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Staff -  {{parent()}}{% endblock %}
+{% block  navbar %}
+        {{ include('menu/menuBack.html.twig') }}
+    {% endblock %}
 {% block content %}
     <h1>Dashboard</h1>
     <table class="table table-bordered  table-hover">

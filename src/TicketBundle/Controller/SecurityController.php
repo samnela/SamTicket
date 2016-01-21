@@ -13,6 +13,15 @@ class SecurityController extends Controller
 {
 
     /**
+     * @Route("/",name="staff_staff")
+     */
+    public function staffAction()
+    {
+
+        return new Response('<html><body> staff staff </html></body>');
+    }
+
+    /**
      * @Route("/login", name="login_route")
      */
     public function loginAction(Request $request)
@@ -41,14 +50,5 @@ class SecurityController extends Controller
     public function logoutAction()
     {
         
-    }
-
-    /**
-     * @Route("/",name="staff_staff")
-     */
-    public function staffAction()
-    {
-
-        return new Response('<html><body> staff staff </html></body>');
     }
 }
