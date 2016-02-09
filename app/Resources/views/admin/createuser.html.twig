@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Create User  -  {{parent()}}{% endblock %}
+{% block  navbar %}
+    {{ include('menu/menuBack.html.twig') }}
+{% endblock %}
+{% block content %}
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+{% endblock %}

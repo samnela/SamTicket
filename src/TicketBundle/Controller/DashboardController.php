@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     
     /**
-     * @Route("/dashboard")
+     * @Route("/dashboard",name="staff_dashboard")
      */
     public function indexAction(Request $request)
     {

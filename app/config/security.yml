@@ -14,8 +14,6 @@ security:
                 class: TicketBundle:User
 
     firewalls:
-        
-
         staff_area:
             pattern: ^/staff
             http_basic: ~
