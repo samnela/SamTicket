@@ -18,6 +18,8 @@ security:
             pattern: ^/staff
             http_basic: ~
             provider: user_provider
+            logout: 
+                path: /staff/logout
             form_login:
                 login_path: /staff/login
                 check_path: /staff/login_check

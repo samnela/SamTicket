@@ -26,6 +26,9 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('staff_dashboard');
+        }
         $authentification = $this->get('security.authentication_utils');
         $error = $authentification->getLastAuthenticationError();
         $lastUsername = $authentification->getLastUsername();
@@ -49,6 +52,6 @@ class SecurityController extends Controller
      */
     public function logoutAction()
     {
-        
+        return $this->redirectToRoute('ticket_index');
     }
 }
