@@ -5,6 +5,8 @@ security:
                  algorithm: bcrypt
 
     role_hierarchy:
+        ROLE_AGENT: ROLE_USER
+        ROLE_MANAGER: [ROLE_ADMIN , ROLE_AGENT]
         ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: [ ROLE_USER , ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
        
