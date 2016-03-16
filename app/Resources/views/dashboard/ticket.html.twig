@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Ticket  -  {{parent()}}{% endblock %}
+{% block  navbar %}
+    {{ include('menu/menuBack.html.twig') }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="row"><h1> {{ ticket.subject}}</h1>
+        </div>
+     <div class="col-md-5">   
+         Status : {{ ticket.status}}
+        Priority : {{ ticket.priority }}
+        Created at : {{ticket.createdDate |date("m/d/Y H::s")}}
+           {% if ticket.getupdatedDate is defined %}
+        Updated at :  {{ticket.updatedDate  |date("m/d/Y H::s")}}
+        {% endif %}
+    </div>
+    <div class="col-md-8  col-md-offset-3">
+        First Name: {{ ticket.firstname}}
+        Last Name : {{ ticket.lastname}}
+        Phone number : {{ ticket.phonenumber }}
+        Email :{{ ticket.email }}
+    </div>
+    </div>
+        <div class="row">
+                Assigned To :
+                Due Date : 
+        </div>
+    
+ {% endblock %}
+ 

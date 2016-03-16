@@ -1,8 +1,8 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Staff -  {{parent()}}{% endblock %}
 {% block  navbar %}
-        {{ include('menu/menuBack.html.twig') }}
-    {% endblock %}
+    {{ include('menu/menuBack.html.twig') }}
+{% endblock %}
 {% block content %}
     <h1>Dashboard</h1>
     <table class="table table-bordered  table-hover">
@@ -16,33 +16,40 @@
     </thead>
     <tbody>
         {% for ticket in tickets %}    
+     
             <tr>
-                <td>{{ticket.id}}</td>
+
+                <td>
+                    <a href="{{path('staff_ticket_summary',{'id':ticket.id}) }}"> 
+                        n° {{ticket.id}}
+                    </a>
+                </td>
                 <td>
                     {% if ticket.priority %}
-                    {{ ticket.priority.priority}}
+                        {{ ticket.priority.priority}}
                     {% else %}
                         not defined 
-                         {% endif %}
+                    {% endif %}
                 </td>
-                
+
                 <td>
                     {% if ticket.status %}  
-                    {{ticket.status.status}}
+                        {{ticket.status.status}}
                     {% else %}
                         not defined
-                        {% endif %}
+                    {% endif %}
                 </td>
                 <td>{{ticket.subject}}</td>
                 <td>{{ticket.createdDate |date("m/d/Y H::s")}}</td>
                 <td>
                     {% if ticket.getupdatedDate is defined %}
-{{ticket.updatedDate  }}
-{% else %}
-                       not defined
-                        {% endif %}
-                                    </td>
+                        {{ticket.updatedDate  }}
+                    {% else %}
+                        not defined
+                    {% endif %}
+                </td>
             </tr>
+
         {% endfor %}
     </tbody>
 
