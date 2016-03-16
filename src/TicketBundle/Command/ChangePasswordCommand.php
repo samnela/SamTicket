@@ -4,7 +4,6 @@ namespace TicketBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ChangePasswordCommand extends ContainerAwareCommand
@@ -15,8 +14,7 @@ class ChangePasswordCommand extends ContainerAwareCommand
         $this->setName('user:change-password')
             ->setDescription('Change password user')
             ->addArgument('user', InputArgument::REQUIRED)
-            ->addArgument('password', InputArgument::REQUIRED)
-            ->addOption('yell', null, InputOption::VALUE_NONE, 'if set ,the task will yell  in uppercase letters');
+            ->addArgument('password', InputArgument::REQUIRED);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -33,10 +31,6 @@ class ChangePasswordCommand extends ContainerAwareCommand
             $text = 'Change password for ' . $userRepo->getUsername();
         } else {
             $text = 'This user don\'t exist ';
-        }
-
-        if ($input->getOption('yell')) {
-            $text = strtoupper($text);
         }
 
         $output->writeln($text);

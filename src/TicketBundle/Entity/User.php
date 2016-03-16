@@ -39,7 +39,7 @@ class User implements UserInterface, \Serializable
     private $isActive;
     
     /**
-     * @ORM\Column(name="roles", type="array")
+     * @ORM\Column(name="roles", type="array",nullable=true)
      */
     private $roles;
     
