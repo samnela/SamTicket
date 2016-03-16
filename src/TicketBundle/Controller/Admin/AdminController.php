@@ -1,5 +1,5 @@
 <?php
- namespace TicketBundle\Controller;
+ namespace TicketBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
