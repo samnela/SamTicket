@@ -21,15 +21,15 @@ class AdminController extends Controller
         $user = new User();
         $form = $this->createForm(new CreateUserType(), $user);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $encoder = $this->container->get('security.password_encoder');
-            $plainPassword= $form->get('password')->getData();
-            $encoded = $encoder->encodePassword($user,$plainPassword);
+            $encoder = $this->get('security.password_encoder');
+            $plainPassword = $form->get('password')->getData();
+            $encoded = $encoder->encodePassword($user, $plainPassword);
             $user->setPassword($encoded);
             $em->persist($user);
             $em->flush();
-          return  $this->redirectToRoute("staff_dashboard");
+            return $this->redirectToRoute("staff_dashboard");
         }
         return $this->render('admin/createuser.html.twig', array('form' => $form->createView()));
     }
