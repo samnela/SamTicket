@@ -16,7 +16,7 @@ class TicketController extends Controller
     public function indexAction(Request $req)
     {
         $ticket = new Ticket();
-        $form = $this->createForm(new TicketType(), $ticket);
+        $form = $this->createForm(TicketType::class, $ticket);
         $form->handleRequest($req);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

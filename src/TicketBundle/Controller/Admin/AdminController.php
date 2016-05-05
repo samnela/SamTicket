@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function createUserAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm(new CreateUserType(), $user);
+        $form = $this->createForm(CreateUserType::class, $user);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
