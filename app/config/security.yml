@@ -25,7 +25,7 @@ security:
             form_login:
                 login_path: /staff/login
                 check_path: /staff/login_check
-                csrf_provider: security.csrf.token_manager
+                csrf_token_generator: security.csrf.token_manager
             anonymous: ~
 
         main:
