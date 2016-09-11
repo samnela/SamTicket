@@ -1,4 +1,5 @@
 <?php
+
 namespace TicketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, \Serializable
 {
-
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -37,16 +37,15 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
-    
+
     /**
      * @ORM\Column(name="roles", type="array",nullable=true)
      */
     private $roles;
-    
+
     public function __construct()
     {
         $this->isActive = true;
-
     }
 
     public function getUsername()
@@ -58,7 +57,7 @@ class User implements UserInterface, \Serializable
     {
         // you *may* need a real salt depending on your encoder
         // see section on salt below
-        return null;
+        return;
     }
 
     public function getPassword()
@@ -73,7 +72,6 @@ class User implements UserInterface, \Serializable
 
     public function eraseCredentials()
     {
-        
     }
 
     /** @see \Serializable::serialize() */
@@ -91,7 +89,7 @@ class User implements UserInterface, \Serializable
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->username,
             $this->password,
@@ -101,9 +99,9 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -111,7 +109,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set username
+     * Set username.
      *
      * @param string $username
      *
@@ -125,7 +123,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password
      *
@@ -139,7 +137,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      *
@@ -153,7 +151,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
@@ -163,9 +161,9 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set isActive
+     * Set isActive.
      *
-     * @param boolean $isActive
+     * @param bool $isActive
      *
      * @return User
      */
@@ -177,9 +175,9 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Get isActive
+     * Get isActive.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsActive()
     {
@@ -187,7 +185,7 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * Set roles
+     * Set roles.
      *
      * @param array $roles
      *

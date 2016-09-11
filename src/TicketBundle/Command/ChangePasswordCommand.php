@@ -1,4 +1,5 @@
 <?php
+
 namespace TicketBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -8,7 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ChangePasswordCommand extends ContainerAwareCommand
 {
-
     protected function configure()
     {
         $this->setName('user:change-password')
@@ -28,7 +28,7 @@ class ChangePasswordCommand extends ContainerAwareCommand
         if ($userRepo) {
             $userRepo->setPassword($encoded);
             $em->flush();
-            $text = 'Change password for ' . $userRepo->getUsername();
+            $text = 'Change password for '.$userRepo->getUsername();
         } else {
             $text = 'This user don\'t exist ';
         }

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mysql -u root -p$1 -u root  samticket<  /var/www/SamTicket/dump/fixture.sql
+mysql -u root -p$1  sam_ticket <  /var/www/SamTicket/dump/fixture.sql
