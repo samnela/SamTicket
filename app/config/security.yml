@@ -7,13 +7,14 @@ security:
     role_hierarchy:
         ROLE_AGENT: ROLE_USER
         ROLE_MANAGER: [ROLE_ADMIN , ROLE_AGENT]
-        ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: [ ROLE_USER , ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        ROLE_ADMIN: ROLE_MANAGER
+        ROLE_SUPER_ADMIN: [ ROLE_MANAGER , ROLE_ALLOWED_TO_SWITCH ]
        
     providers:
         user_provider:
             entity:
                 class: TicketBundle:User
+                property: username
 
     firewalls:
         staff_area:
@@ -23,8 +24,8 @@ security:
             logout: 
                 path: /staff/logout
             form_login:
-                login_path: /staff/login
-                check_path: /staff/login_check
+                login_path: login_route
+                check_path: login_check
                 csrf_token_generator: security.csrf.token_manager
             anonymous: ~
 
@@ -42,7 +43,6 @@ security:
 
     access_control:
         
-#        - { path : ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }     
         - { path : ^/staff/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path : ^/staff, roles: IS_AUTHENTICATED_FULLY }
    
