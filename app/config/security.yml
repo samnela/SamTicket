@@ -8,7 +8,7 @@ security:
         ROLE_AGENT: ROLE_USER
         ROLE_MANAGER: [ROLE_ADMIN , ROLE_AGENT]
         ROLE_ADMIN: ROLE_MANAGER
-        ROLE_SUPER_ADMIN: [ ROLE_MANAGER , ROLE_ALLOWED_TO_SWITCH ]
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN , ROLE_ALLOWED_TO_SWITCH ]
        
     providers:
         user_provider:
@@ -18,8 +18,8 @@ security:
 
     firewalls:
         staff_area:
-            pattern: ^/staff
-            http_basic: ~
+            anonymous: ~
+            pattern: ^/
             provider: user_provider
             logout: 
                 path: /staff/logout
@@ -27,14 +27,6 @@ security:
                 login_path: login_route
                 check_path: login_check
                 csrf_token_generator: security.csrf.token_manager
-            anonymous: ~
-
-        main:
-            pattern: ^/
-            anonymous: ~        
-            
- 
-          
             
             
         dev:
