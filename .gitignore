@@ -1,13 +1,13 @@
 /nbproject/private/
 /app/bootstrap.php.cache
 /var/cache/*
-!app/cache/.gitkeep
 /app/config/parameters.yml
 /var/logs/*
-!app/logs/.gitkeep
 /app/phpunit.xml
 /bin/
 /composer.phar
 /vendor/
 /web/bundles/
 .vagrant
+.DS_Store
+.DS_Store?
