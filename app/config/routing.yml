@@ -1,3 +1,9 @@
 ticket:
     resource: "@TicketBundle/Controller/"
     type:     annotation
+    
+login_check:
+    path: /staff/login_check
+
+login_logout:
+    path: /staff/logout
