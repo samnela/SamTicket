@@ -1,0 +1,16 @@
+# entities dependance
+Priority:
+    - low
+    - normal
+    - high
+    - emergency
+       
+Status:
+    - open
+    - closed
+    - overdue
+    
+
+    
+        
+   
