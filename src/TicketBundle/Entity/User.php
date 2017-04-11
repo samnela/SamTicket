@@ -3,13 +3,13 @@
 namespace TicketBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Table(name="sam_user")
  * @ORM\Entity(repositoryClass="TicketBundle\Entity\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -39,7 +39,7 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\Column(name="roles", type="array",nullable=true)
+     * @ORM\Column(name="roles", type="array")
      */
     private $roles;
 
@@ -64,10 +64,13 @@ class User implements UserInterface, \Serializable
     {
         return $this->password;
     }
-    /** @todo add role in database **/
+
     public function getRoles()
     {
-        return array('ROLE_USER');
+        $roles = $this->roles;
+        $roles[] = UserRoles::ROLE_DEFAULT;
+
+        return array_unique($roles);
     }
 
     public function eraseCredentials()
@@ -81,20 +84,17 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt,
+            $this->isActive,
         ));
     }
 
-    /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
         list(
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt
+            $this->isActive
             ) = unserialize($serialized);
     }
 
@@ -184,6 +184,23 @@ class User implements UserInterface, \Serializable
         return $this->isActive;
     }
 
+    public function addRole($role)
+    {
+        if (UserRoles::ROLE_DEFAULT === strtoupper($role)) {
+            return $this;
+        }
+
+        if (!in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
+    public function hasRole($role)
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
     /**
      * Set roles.
      *
@@ -196,5 +213,32 @@ class User implements UserInterface, \Serializable
         $this->roles = $roles;
 
         return $this;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function isCredentialsNonExpired()
+    {
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function isEnabled()
+    {
+        $this->isActive;
     }
 }
