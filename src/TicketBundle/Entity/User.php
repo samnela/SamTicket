@@ -34,7 +34,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(name="is_active", type="boolean", options={"default": true})
      */
     private $isActive;
 
@@ -55,8 +55,6 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getSalt()
     {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
         return;
     }
 
@@ -233,12 +231,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function isCredentialsNonExpired()
     {
+        return true;
     }
     /**
      * {@inheritdoc}
      */
     public function isEnabled()
     {
-        $this->isActive;
+        return $this->isActive;
     }
 }
