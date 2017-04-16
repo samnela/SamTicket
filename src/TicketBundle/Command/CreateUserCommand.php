@@ -52,7 +52,7 @@ class CreateUserCommand extends ContainerAwareCommand
         $user->setPassword($encoded)
         ->setUsername($username)
         ->setEmail($email)
-            ->setIsActive(true)
+            ->setActive(true)
             ->setRoles(array($role));
 
         $entityManager->persist($user);
