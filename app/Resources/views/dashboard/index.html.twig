@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Staff -  {{parent()}}{% endblock %}
 {% block  navbar %}
-    {{ include('menu/menuBack.html.twig') }}
+    {{ include('menu/menu_back.html.twig') }}
 {% endblock %}
 {% block content %}
     <h1>Dashboard</h1>
@@ -16,7 +16,7 @@
     </thead>
     <tbody>
         {% for ticket in tickets %}    
-     
+
             <tr>
 
                 <td>

@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Staff -  {{parent()}}{% endblock %}
 {% block navbar %}
-    {{ include('menu/menuFront.html.twig') }}
+    {{ include('menu/menu_front.html.twig') }}
     {% endblock %}
 {% block content %}
     {% if error %}
@@ -21,7 +21,7 @@
         <button type="submit" class="btn">Log in</button>
     </form>
     <p>
-        <a href="{{path('staff_account_create')}}">Need an account? Sign up free.</a>
+        <a href="">Need an account? Sign up free.</a>
 
     </p>
 {% endblock %}

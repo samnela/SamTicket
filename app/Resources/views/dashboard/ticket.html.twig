@@ -1,11 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block title %} Ticket  -  {{parent()}}{% endblock %}
 {% block  navbar %}
-    {{ include('menu/menuBack.html.twig') }}
+    {{ include('menu/menu_back.html.twig') }}
 {% endblock %}
 {% block content %}
     <div class="content">
         <div class="container">
+            {% if ticket %}
             <div class="row" >
                 <div class="row">
                     <h1 class="col-md-offset-4"> {{ ticket.subject}}</h1>
@@ -28,6 +29,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}       
             <div class="row">
                 <div class="row">    <b>  Assigned To :</b> </div>
                 <div class="row">    <b>  Due Date : </b> </div>

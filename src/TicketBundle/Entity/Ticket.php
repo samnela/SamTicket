@@ -39,12 +39,12 @@ class Ticket
     protected $lastname;
 
     /**
-     * @ORM\Column(type="integer", length=100,nullable=true )
+     * @ORM\Column(type="string", length=100,nullable=true )
      */
     protected $phonenumber;
 
     /**
-     * @ORM\Column(type="integer", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $cellnumber;
 

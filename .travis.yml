@@ -1,0 +1,21 @@
+language: php
+php:
+  - '7.0'
+env:
+  - SYMFONY_VERSION=3.2.*
+  - DB=mysql
+sudo: false
+before_install:
+  - mysql -e 'CREATE DATABASE sam_ticket;'
+
+install:
+  - composer install
+  - sh bash/init.sh test
+cache:
+  directories:
+    - $HOME/.composer/cache
+services:
+    - mysql
+script:
+  - ./bin/phpunit
+  

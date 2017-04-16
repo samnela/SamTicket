@@ -8,6 +8,7 @@ use TicketBundle\Form\Type\CreateUserType;
 use TicketBundle\Entity\User;
 
 /**
+ * @author Samuel NELA <hello@samnela.com>
  * @Route("/staff/admin")
  */
 class AdminController extends Controller
